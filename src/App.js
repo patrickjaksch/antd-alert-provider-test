@@ -20,6 +20,16 @@ function App() {
                             <BannerInputForm/>
                         </Card>
                     </Space>
+                    <AlertProvider>
+                        <Space size="small" direction="vertical" style={{width: '100%'}}>
+                            <Card title="Another Card">
+                            <AlertContainer/>
+                                <h1>This is some more content.</h1>
+                                <BannerInputForm/>
+                            </Card>
+                        </Space>
+                    </AlertProvider>
+
                 </main>
             </AlertProvider>
         </div>

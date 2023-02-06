@@ -28,44 +28,7 @@ const defaultAlert = {
 }
 
 const defaultAlertState = {
-    alerts: [
-        {
-            ...defaultAlert,
-            type: 'error',
-            message: 'Default Critical Priority Message',
-            description: 'This is a default message.',
-            id: 'a1',
-            banner: true,
-            alertActionCallback
-        },
-        {
-            ...defaultAlert,
-            type: 'warning',
-            message: 'Default High Priority Message',
-            description: 'This is a default message.',
-            id: 'a2',
-            banner: true,
-            alertActionCallback
-        },
-        {
-            ...defaultAlert,
-            type: 'info',
-            message: 'Default Medium Priority Message',
-            description: 'This is a default message.',
-            id: 'a3',
-            banner: true,
-            alertActionCallback
-        },
-        {
-            ...defaultAlert,
-            type: 'success',
-            message: 'Default Low Priority Message',
-            description: 'This is a default message.',
-            id: 'a4',
-            banner: true,
-            alertActionCallback
-        },
-    ]
+    alerts: []
 };
 
 
