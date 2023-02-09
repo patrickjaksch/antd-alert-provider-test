@@ -21,7 +21,8 @@ const alertActionCallback = (alert) => {
 
 
 }
-const defaultAlerts = [{
+const defaultAlerts = [
+    {
         type: 'error',
         message: 'Default Critical Priority Message',
         description: 'This is a default message.',
@@ -71,7 +72,7 @@ const BannerInputForm = () => {
         console.log('addAllFiltered');
         const ignoredAlertsFromStorage = sessionStorage.getItem('ignored-alerts');
         const ignoredAlerts = (null == ignoredAlertsFromStorage) ? [] : JSON.parse(ignoredAlertsFromStorage);
-        defaultAlerts.filter(alert => ignoredAlerts.includes(alert.id)).forEach(alert => {
+        defaultAlerts.filter(alert => !ignoredAlerts.includes(alert.id)).forEach(alert => {
             addAlert(alert)
         });
     }
@@ -94,9 +95,11 @@ const BannerInputForm = () => {
                     <Input placeholder="This is the body content of the alert."/>
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit">Submit</Button>
-                    <Button onClick={addAll}>Add All</Button>
-                    <Button onClick={addAllFiltered}>Add All Filtered</Button>
+                    <Space>
+                        <Button type="primary" htmlType="submit">Submit</Button>
+                        <Button onClick={addAll}>Add All</Button>
+                        <Button onClick={addAllFiltered}>Add All Filtered</Button>
+                    </Space>
                 </Form.Item>
             </Form>
         </Space>

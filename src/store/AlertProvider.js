@@ -2,10 +2,6 @@ import {useReducer} from "react";
 import AlertContext from "./alert-context";
 import {CloseOutlined} from "@ant-design/icons";
 
-const alertActionCallback = (alert) => {
-    console.log('This is where we write the ID of the alert to the localstorage to prevent it from loading the next time.', alert);
-}
-
 // defining some sane defaults for the alert
 const defaultAlert = {
     id: null,
