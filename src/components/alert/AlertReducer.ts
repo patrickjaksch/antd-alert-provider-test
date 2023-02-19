@@ -4,11 +4,12 @@ export enum AlertActions {
 }
 
 export interface Alert {
+    [key: string]: any,
     afterClose: () => void;
     banner: boolean;
     closable: boolean;
     closeText: string;
-    closeIcon: unknown;
+    closeIcon: JSX.Element;
     description: string;
     icon: JSX.Element;
     message: string;

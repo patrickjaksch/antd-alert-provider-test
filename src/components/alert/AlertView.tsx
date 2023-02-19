@@ -7,7 +7,7 @@ import {Alert, Button, Space} from 'antd';
 
 const AlertView = () => {
     const {alerts, removeAlert} = useAlert();
-    const alertAction = (alert) => {
+    const alertAction = (alert: IntegrateAlert) => {
         const onClickHandler = () => {
             if (alert.alertActionCallback) {
                 alert.alertActionCallback(alert);
@@ -38,7 +38,7 @@ const AlertView = () => {
         // filtering null value attributes since they should not override their default settings
         const nonNullAttributes = Object.keys(alert)
             .filter((key) => !manuallyAssignedAttributes.includes(key) && null != alert[key])
-            .reduce((attributes, key) => {
+            .reduce((attributes: {[key: string]: any}, key) => {
                 attributes[key] = alert[key];
                 return attributes;
             }, {});

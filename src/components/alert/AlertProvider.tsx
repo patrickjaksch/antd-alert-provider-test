@@ -7,9 +7,13 @@ export interface AlertContextArgs {
     removeAlert: (id: string | number) => void;
 }
 
-const AlertContext = React.createContext<AlertContextArgs>(null);
+const AlertContext = React.createContext<AlertContextArgs | null>(null);
 
-const AlertProvider = (props) => {
+interface IProps {
+    children: JSX.Element
+}
+
+const AlertProvider = (props: IProps) => {
     const [alertState, alertDispatcher] = useReducer(alertReducer, {alerts: []});
 
     const addAlertHandler = (alert: Partial<Alert>) => {

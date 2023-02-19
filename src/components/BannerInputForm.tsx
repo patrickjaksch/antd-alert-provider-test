@@ -1,7 +1,8 @@
 import {Button, Form, Input, Radio, Space} from "antd";
-import useAlert from "./alert/AlertProvider";
+import {useAlert} from "./alert/AlertProvider";
+import {Alert} from "./alert/AlertReducer";
 
-const transformSeverityToAlertType = (type) => {
+const transformSeverityToAlertType = (type: string) => {
     switch (type) {
         case 'critical':
             return 'error';
@@ -13,7 +14,7 @@ const transformSeverityToAlertType = (type) => {
             return 'success';
     }
 };
-const alertActionCallback = (alert) => {
+const alertActionCallback = (alert: Alert) => {
     console.log('This is where we write the ID of the alert to the localstorage to prevent it from loading the next time.');
     const ignoredAlertsFromStorage = sessionStorage.getItem('ignored-alerts');
     const ignoredAlerts = (null == ignoredAlertsFromStorage) ? [] : JSON.parse(ignoredAlertsFromStorage);
@@ -55,7 +56,8 @@ const defaultAlerts = [
 const BannerInputForm = () => {
     const {addAlert} = useAlert();
 
-    const addAlertHandler = (values) => {
+    const addAlertHandler = (values: {type: string, message: string, description: string}) => {
+        // console.log(values)
         const message = values.message;
         const description = values.description;
         const type = transformSeverityToAlertType(values.type);
