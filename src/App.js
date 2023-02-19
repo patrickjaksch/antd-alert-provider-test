@@ -1,8 +1,9 @@
 import './App.css';
 import {Card, Space} from "antd";
-import AlertProvider from "./store/AlertProvider";
-import AlertContainer from "./components/AlertContainer";
+
 import BannerInputForm from "./components/BannerInputForm";
+import AlertView from './components/alert/AlertView';
+import AlertProvider from './components/alert/AlertProvider';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
             </header>
             <AlertProvider>
                 <main>
-                    <AlertContainer/>
+                    <AlertView />
                     <Space size="small" direction="vertical" style={{width: '100%'}}>
                         <Card title="Main Card">
                             <h1>This is some content.</h1>

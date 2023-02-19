@@ -1,6 +1,3 @@
-import {useReducer} from "react";
-import AlertContext from "./alert-context";
-import {CloseOutlined} from "@ant-design/icons";
 
 // defining some sane defaults for the alert
 const defaultAlert = {
@@ -12,7 +9,7 @@ const defaultAlert = {
     // closable and all related properties are not the Alert's native properties since we use a custom close handler
     closable: true,
     closeText: null,
-    closeIcon: <CloseOutlined style={{fontSize: '.75rem'}}/>,
+    closeIcon: null,
     description: null,
     icon: null,
     message: null,
@@ -22,10 +19,6 @@ const defaultAlert = {
     // custom attributes below
     alertActionCallback: null
 }
-
-const defaultAlertState = {
-    alerts: []
-};
 
 
 const alertReducer = (state, action) => {
@@ -53,32 +46,8 @@ const alertReducer = (state, action) => {
                 alerts: state.alerts.filter(alert => alert.id !== action.id),
             }
         default:
-            return defaultAlertState;
+            return state;
     }
 }
 
-const AlertProvider = (props) => {
-    const [alertState, alertDispatcher] = useReducer(alertReducer, defaultAlertState);
-
-    const addAlertHandler = (alert) => {
-        alertDispatcher({type: 'ADD', alert});
-    }
-
-    const removeAlertHandler = (id) => {
-        alertDispatcher({type: 'REMOVE', id});
-    }
-
-    const alertContext = {
-        alerts: alertState.alerts,
-        addAlert: addAlertHandler,
-        removeAlert: removeAlertHandler
-    }
-
-    return (
-        <AlertContext.Provider value={alertContext}>
-            {props.children}
-        </AlertContext.Provider>
-    );
-};
-
-export default AlertProvider;
+export default alertReducer;

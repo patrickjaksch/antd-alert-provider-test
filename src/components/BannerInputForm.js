@@ -1,6 +1,8 @@
 import {Button, Form, Input, Radio, Space} from "antd";
-import useAlert from "../hooks/useAlert";
+//import useAlert from "../hooks/useAlert";
+import {useContext} from 'react';
 
+import {AlertContext} from './alert/AlertProvider';
 const transformSeverityToAlertType = (type) => {
     switch (type) {
         case 'critical':
@@ -53,7 +55,7 @@ const defaultAlerts = [
 
 
 const BannerInputForm = () => {
-    const {addAlert} = useAlert();
+    const {addAlert} = useContext(AlertContext);
 
     const addAlertHandler = (values) => {
         const message = values.message;
