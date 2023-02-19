@@ -1,5 +1,5 @@
 import {Button, Form, Input, Radio, Space} from "antd";
-import useAlert from "../hooks/useAlert";
+import useAlert from "./alert/AlertProvider";
 
 const transformSeverityToAlertType = (type) => {
     switch (type) {
